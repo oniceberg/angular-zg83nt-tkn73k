@@ -1,0 +1,27 @@
+<h2>Products</h2>
+<!--修改 *ngFor 指令，在遍历列表的过程中把 products 数组中的每个索引赋值给 productId 变量。-->
+<div *ngFor="let product of products; index as productId">
+	<h3>
+        <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+      {{ product.name }}
+    </a>
+	</h3>
+	<p *ngIf="product.description">
+		Description: {{ product.description }}
+	</p>
+
+	<button (click)="share()">
+    Share
+  </button>
+<app-product-alerts
+  [product]="product" 
+  (notify)="onNotify()">
+</app-product-alerts>
+
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
